@@ -1,14 +1,5 @@
 [
   {
-    "id": "6",
-    "task": "Clean out pantry",
-    "room": "kitchen",
-    "priority": "medium",
-    "due": "",
-    "done": false,
-    "date": "2026-07-14"
-  },
-  {
     "id": "5",
     "task": "Clean out fridge before Ireland trip",
     "room": "kitchen",
