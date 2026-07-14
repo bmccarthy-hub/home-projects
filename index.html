@@ -152,6 +152,31 @@
     <div class="stat"><strong id="stat-done">0</strong>Done</div>
   </div>
 
+  <div class="add-form">
+    <h2>Add a project</h2>
+    <div class="form-row">
+      <input type="text" name="task" id="input-task" placeholder="What needs to be done?" />
+    </div>
+    <div class="form-row">
+      <select id="input-room">
+        <option value="kitchen">🍳 Kitchen</option>
+        <option value="bathroom">🚿 Bathroom</option>
+        <option value="bedroom">🛏 Bedroom</option>
+        <option value="living">🛋 Living Room</option>
+        <option value="garage">🚗 Garage</option>
+        <option value="exterior">🌿 Exterior</option>
+        <option value="other">📦 Other</option>
+      </select>
+      <select id="input-priority">
+        <option value="medium">⚡ Medium</option>
+        <option value="high">🔴 High</option>
+        <option value="low">🔵 Low</option>
+      </select>
+      <input type="date" id="input-due" />
+      <button class="btn-add" onclick="addProject()">+ Add</button>
+    </div>
+  </div>
+
   <div class="filter-section">
     <div class="filter-group">
       <div class="filter-label">Status</div>
@@ -175,31 +200,6 @@
         <button class="filter-btn" onclick="setRoomFilter('exterior',this)">🌿 Exterior</button>
         <button class="filter-btn" onclick="setRoomFilter('other',this)">📦 Other</button>
       </div>
-    </div>
-  </div>
-
-  <div class="add-form">
-    <h2>Add a project</h2>
-    <div class="form-row">
-      <input type="text" name="task" id="input-task" placeholder="What needs to be done?" />
-    </div>
-    <div class="form-row">
-      <select id="input-room">
-        <option value="kitchen">🍳 Kitchen</option>
-        <option value="bathroom">🚿 Bathroom</option>
-        <option value="bedroom">🛏 Bedroom</option>
-        <option value="living">🛋 Living Room</option>
-        <option value="garage">🚗 Garage</option>
-        <option value="exterior">🌿 Exterior</option>
-        <option value="other">📦 Other</option>
-      </select>
-      <select id="input-priority">
-        <option value="medium">⚡ Medium</option>
-        <option value="high">🔴 High</option>
-        <option value="low">🔵 Low</option>
-      </select>
-      <input type="date" id="input-due" />
-      <button class="btn-add" onclick="addProject()">+ Add</button>
     </div>
   </div>
 
