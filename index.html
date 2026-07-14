@@ -9,7 +9,6 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f6f3; color: #1a1a1a; min-height: 100vh; padding: 20px 16px; }
 
-  /* Setup */
   .setup-screen { max-width: 420px; margin: 60px auto; background: #fff; border: 1px solid #e8e8e8; border-radius: 16px; padding: 32px; }
   .setup-screen h1 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
   .setup-screen p { font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.5; }
@@ -21,12 +20,10 @@
   .btn-primary:hover { background: #333; }
   .setup-note { font-size: 12px; color: #aaa; margin-top: 16px; text-align: center; line-height: 1.5; }
 
-  /* Loading */
   .loading-screen { text-align: center; padding: 80px 20px; color: #aaa; font-size: 15px; }
   .spinner { width: 28px; height: 28px; border: 3px solid #eee; border-top-color: #1a1a1a; border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 16px; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* Main */
   .main-screen { display: none; }
   .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 8px; }
   .top-bar h1 { font-size: 21px; font-weight: 700; }
@@ -40,16 +37,6 @@
   .stat { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 8px 12px; font-size: 12px; color: #555; flex: 1; text-align: center; }
   .stat strong { display: block; font-size: 20px; font-weight: 700; color: #1a1a1a; margin-bottom: 1px; }
 
-  /* Filters */
-  .filter-section { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; }
-  .filter-group { margin-bottom: 10px; }
-  .filter-group:last-child { margin-bottom: 0; }
-  .filter-label { font-size: 11px; font-weight: 600; color: #bbb; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 7px; }
-  .filter-row { display: flex; gap: 5px; flex-wrap: wrap; }
-  .filter-btn { padding: 5px 11px; border: 1px solid #ddd; border-radius: 20px; background: #fafafa; font-size: 12px; cursor: pointer; color: #555; white-space: nowrap; }
-  .filter-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
-
-  /* Add form */
   .add-form { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 14px; margin-bottom: 14px; }
   .add-form h2 { font-size: 12px; font-weight: 600; color: #bbb; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
   .form-row { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 7px; }
@@ -60,7 +47,19 @@
   input[type="date"] { color: #555; }
   .btn-add { padding: 9px 16px; background: #1a1a1a; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
 
-  /* Cards */
+  .filter-section { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; }
+  .filter-group { margin-bottom: 10px; }
+  .filter-group:last-child { margin-bottom: 0; }
+  .filter-group-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px; }
+  .filter-label { font-size: 11px; font-weight: 600; color: #bbb; text-transform: uppercase; letter-spacing: 0.5px; }
+  .btn-manage-areas { background: none; border: none; font-size: 11px; color: #bbb; cursor: pointer; padding: 0; }
+  .btn-manage-areas:hover { color: #555; }
+  .filter-row { display: flex; gap: 5px; flex-wrap: wrap; }
+  .filter-btn { padding: 5px 11px; border: 1px solid #ddd; border-radius: 20px; background: #fafafa; font-size: 12px; cursor: pointer; color: #555; white-space: nowrap; }
+  .filter-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .filter-btn.soon-btn { border-color: #f59e0b; color: #92400e; background: #fef9c3; }
+  .filter-btn.soon-btn.active { background: #f59e0b; color: #fff; border-color: #f59e0b; }
+
   .projects-list { display: flex; flex-direction: column; gap: 8px; }
   .project-card { background: #fff; border: 1px solid #e8e8e8; border-left: 3px solid transparent; border-radius: 12px; padding: 13px 14px; display: flex; align-items: flex-start; gap: 11px; }
   .project-card.pri-high { border-left-color: #ef4444; }
@@ -75,32 +74,26 @@
   .project-card.done .project-task { text-decoration: line-through; color: #aaa; }
   .project-meta { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
   .tag { font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
-  .room-kitchen { background: #fef3c7; color: #92400e; }
-  .room-bathroom { background: #dbeafe; color: #1e40af; }
-  .room-bedroom { background: #fce7f3; color: #9d174d; }
-  .room-living { background: #dcfce7; color: #166534; }
-  .room-garage { background: #f3f4f6; color: #374151; }
-  .room-exterior { background: #e0f2fe; color: #0c4a6e; }
-  .room-other { background: #f3f4f6; color: #6b7280; }
+  .area-tag { background: #f0f0f0; color: #444; }
   .pri-tag-high { background: #fee2e2; color: #b91c1c; }
   .pri-tag-medium { background: #fef9c3; color: #92400e; }
   .pri-tag-low { background: #f1f5f9; color: #64748b; }
+  .rec-tag { background: #ede9fe; color: #6d28d9; }
   .due-tag { font-size: 11px; color: #888; }
   .due-tag.overdue { color: #ef4444; font-weight: 600; }
   .due-tag.soon { color: #f59e0b; font-weight: 600; }
-  .card-actions { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
-  .btn-icon { background: none; border: none; color: #ccc; font-size: 16px; cursor: pointer; padding: 4px 5px; border-radius: 6px; line-height: 1; }
+  .btn-icon { background: none; border: none; color: #ccc; font-size: 16px; cursor: pointer; padding: 4px 5px; border-radius: 6px; line-height: 1; flex-shrink: 0; }
   .btn-icon:hover { color: #666; background: #f5f5f5; }
-  .btn-icon.delete:hover { color: #e55; }
   .empty { text-align: center; padding: 36px 20px; color: #bbb; font-size: 14px; }
   .error-banner { background: #fee2e2; color: #b91c1c; border-radius: 10px; padding: 11px 14px; font-size: 13px; margin-bottom: 14px; display: none; }
-  .btn-signout { background: none; border: none; font-size: 12px; color: #ccc; cursor: pointer; padding: 0; }
+  .info-banner { background: #ede9fe; color: #6d28d9; border-radius: 10px; padding: 11px 14px; font-size: 13px; margin-bottom: 14px; display: none; }
+  .btn-signout { background: none; border: none; font-size: 12px; color: #ccc; cursor: pointer; }
   .btn-signout:hover { color: #888; }
 
-  /* Edit Modal */
+  /* Modals */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; display: none; align-items: flex-end; justify-content: center; }
   .modal-overlay.open { display: flex; }
-  .modal { background: #fff; border-radius: 20px 20px 0 0; padding: 24px 20px 36px; width: 100%; max-width: 520px; }
+  .modal { background: #fff; border-radius: 20px 20px 0 0; padding: 24px 20px 36px; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; }
   .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
   .modal-header h3 { font-size: 17px; font-weight: 700; }
   .btn-close { background: none; border: none; font-size: 22px; color: #aaa; cursor: pointer; line-height: 1; padding: 0 4px; }
@@ -117,6 +110,17 @@
   .btn-save { flex: 1; padding: 12px; background: #1a1a1a; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; }
   .btn-save:hover { background: #333; }
   .btn-delete-modal { padding: 12px 16px; background: #fee2e2; color: #b91c1c; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; }
+
+  /* Manage areas */
+  .area-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .area-row input { flex: 1; padding: 9px 11px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; background: #fafafa; color: #1a1a1a; outline: none; }
+  .area-row input:focus { border-color: #6c63ff; background: #fff; }
+  .area-row input:disabled { color: #aaa; background: #f9f9f9; }
+  .btn-del-area { background: none; border: none; color: #ddd; font-size: 18px; cursor: pointer; padding: 4px; line-height: 1; flex-shrink: 0; }
+  .btn-del-area:hover { color: #e55; }
+  .btn-add-area { width: 100%; padding: 10px; border: 1px dashed #ddd; border-radius: 8px; background: none; color: #aaa; font-size: 14px; cursor: pointer; margin-top: 4px; }
+  .btn-add-area:hover { border-color: #aaa; color: #555; }
+  .area-fixed-label { font-size: 11px; color: #ccc; padding: 4px 8px; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -124,9 +128,9 @@
 <div id="setup-screen" class="setup-screen" style="display:none">
   <h1>🏠 Connect to GitHub</h1>
   <p>Your projects will be saved to your GitHub repository so they stay in sync across all your devices.</p>
-  <div class="setup-field"><label>GitHub Username</label><input type="text" id="setup-owner" placeholder="e.g. brigitte" autocapitalize="none" autocorrect="off" /></div>
-  <div class="setup-field"><label>Repository Name</label><input type="text" id="setup-repo" value="home-projects" autocapitalize="none" autocorrect="off" /></div>
-  <div class="setup-field"><label>Personal Access Token</label><input type="password" id="setup-token" placeholder="ghp_..." autocapitalize="none" autocorrect="off" autocomplete="off" /></div>
+  <div class="setup-field"><label>GitHub Username</label><input type="text" id="setup-owner" placeholder="e.g. brigitte" autocapitalize="none" autocorrect="off"/></div>
+  <div class="setup-field"><label>Repository Name</label><input type="text" id="setup-repo" value="home-projects" autocapitalize="none" autocorrect="off"/></div>
+  <div class="setup-field"><label>Personal Access Token</label><input type="password" id="setup-token" placeholder="ghp_..." autocapitalize="none" autocorrect="off" autocomplete="off"/></div>
   <button class="btn-primary" onclick="connect()">Connect</button>
   <p class="setup-note">Your token is saved only in this browser and never sent anywhere except GitHub.</p>
 </div>
@@ -145,6 +149,7 @@
   </div>
 
   <div id="error-banner" class="error-banner"></div>
+  <div id="info-banner" class="info-banner"></div>
 
   <div class="stats">
     <div class="stat"><strong id="stat-total">0</strong>Total</div>
@@ -155,88 +160,73 @@
   <div class="add-form">
     <h2>Add a project</h2>
     <div class="form-row">
-      <input type="text" name="task" id="input-task" placeholder="What needs to be done?" />
+      <input type="text" name="task" id="input-task" placeholder="What needs to be done?"/>
     </div>
     <div class="form-row">
-      <select id="input-room">
-        <option value="kitchen">🍳 Kitchen</option>
-        <option value="bathroom">🚿 Bathroom</option>
-        <option value="bedroom">🛏 Bedroom</option>
-        <option value="living">🛋 Living Room</option>
-        <option value="garage">🚗 Garage</option>
-        <option value="exterior">🌿 Exterior</option>
-        <option value="other">📦 Other</option>
-      </select>
+      <select id="input-room"></select>
       <select id="input-priority">
-        <option value="medium">⚡ Medium</option>
         <option value="high">🔴 High</option>
+        <option value="medium" selected>⚡ Medium</option>
         <option value="low">🔵 Low</option>
       </select>
-      <input type="date" id="input-due" />
+    </div>
+    <div class="form-row">
+      <input type="date" id="input-due"/>
+      <select id="input-recurrence">
+        <option value="none">🔂 No repeat</option>
+        <option value="daily">🔁 Daily</option>
+        <option value="weekly">🔁 Weekly</option>
+        <option value="monthly">🔁 Monthly</option>
+        <option value="yearly">🔁 Yearly</option>
+      </select>
       <button class="btn-add" onclick="addProject()">+ Add</button>
     </div>
   </div>
 
   <div class="filter-section">
     <div class="filter-group">
-      <div class="filter-label">Status</div>
+      <div class="filter-group-header">
+        <div class="filter-label">Status</div>
+      </div>
       <div class="filter-row" id="status-filters">
-        <button class="filter-btn active" onclick="setStatusFilter('all',this)">All</button>
-        <button class="filter-btn" onclick="setStatusFilter('todo',this)">To Do</button>
+        <button class="filter-btn" onclick="setStatusFilter('all',this)">All</button>
+        <button class="filter-btn active" onclick="setStatusFilter('todo',this)">To Do</button>
         <button class="filter-btn" onclick="setStatusFilter('done',this)">Done</button>
         <button class="filter-btn" onclick="setStatusFilter('high',this)">🔴 High</button>
+        <button class="filter-btn soon-btn" onclick="setStatusFilter('soon',this)">Due Soon</button>
         <button class="filter-btn" onclick="setStatusFilter('overdue',this)">Overdue</button>
+        <button class="filter-btn" onclick="setStatusFilter('recurring',this)">🔁 Recurring</button>
       </div>
     </div>
     <div class="filter-group">
-      <div class="filter-label">Area</div>
-      <div class="filter-row" id="room-filters">
-        <button class="filter-btn active" onclick="setRoomFilter('all',this)">All</button>
-        <button class="filter-btn" onclick="setRoomFilter('kitchen',this)">🍳 Kitchen</button>
-        <button class="filter-btn" onclick="setRoomFilter('bathroom',this)">🚿 Bathroom</button>
-        <button class="filter-btn" onclick="setRoomFilter('bedroom',this)">🛏 Bedroom</button>
-        <button class="filter-btn" onclick="setRoomFilter('living',this)">🛋 Living</button>
-        <button class="filter-btn" onclick="setRoomFilter('garage',this)">🚗 Garage</button>
-        <button class="filter-btn" onclick="setRoomFilter('exterior',this)">🌿 Exterior</button>
-        <button class="filter-btn" onclick="setRoomFilter('other',this)">📦 Other</button>
+      <div class="filter-group-header">
+        <div class="filter-label">Area</div>
+        <button class="btn-manage-areas" onclick="openManageAreas()">✏️ Manage</button>
       </div>
+      <div class="filter-row" id="room-filters"></div>
     </div>
   </div>
 
   <div class="projects-list" id="projects-list"></div>
 </div>
 
-<!-- Edit Modal -->
-<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+<!-- Edit Project Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeEditModal()">
   <div class="modal">
     <div class="modal-header">
       <h3>Edit Project</h3>
-      <button class="btn-close" onclick="closeModalDirect()">×</button>
+      <button class="btn-close" onclick="closeEditModal()">×</button>
     </div>
-    <div class="modal-field">
-      <label>Task</label>
-      <input type="text" id="edit-task" />
-    </div>
+    <div class="modal-field"><label>Task</label><input type="text" id="edit-task"/></div>
     <div class="modal-field">
       <label>Status</label>
       <div class="status-toggle">
-        <div class="status-opt active" id="status-todo" onclick="setEditStatus(false)">⏳ To Do</div>
-        <div class="status-opt" id="status-done" onclick="setEditStatus(true)">✅ Done</div>
+        <div class="status-opt active" id="status-todo-opt" onclick="setEditStatus(false)">⏳ To Do</div>
+        <div class="status-opt" id="status-done-opt" onclick="setEditStatus(true)">✅ Done</div>
       </div>
     </div>
     <div class="modal-field-row">
-      <div class="modal-field">
-        <label>Area</label>
-        <select id="edit-room">
-          <option value="kitchen">🍳 Kitchen</option>
-          <option value="bathroom">🚿 Bathroom</option>
-          <option value="bedroom">🛏 Bedroom</option>
-          <option value="living">🛋 Living Room</option>
-          <option value="garage">🚗 Garage</option>
-          <option value="exterior">🌿 Exterior</option>
-          <option value="other">📦 Other</option>
-        </select>
-      </div>
+      <div class="modal-field"><label>Area</label><select id="edit-room"></select></div>
       <div class="modal-field">
         <label>Priority</label>
         <select id="edit-priority">
@@ -246,9 +236,18 @@
         </select>
       </div>
     </div>
-    <div class="modal-field">
-      <label>Due Date</label>
-      <input type="date" id="edit-due" />
+    <div class="modal-field-row">
+      <div class="modal-field"><label>Due Date</label><input type="date" id="edit-due"/></div>
+      <div class="modal-field">
+        <label>Repeat</label>
+        <select id="edit-recurrence">
+          <option value="none">No repeat</option>
+          <option value="daily">🔁 Daily</option>
+          <option value="weekly">🔁 Weekly</option>
+          <option value="monthly">🔁 Monthly</option>
+          <option value="yearly">🔁 Yearly</option>
+        </select>
+      </div>
     </div>
     <div class="modal-actions">
       <button class="btn-delete-modal" onclick="deleteFromModal()">Delete</button>
@@ -257,156 +256,292 @@
   </div>
 </div>
 
+<!-- Manage Areas Modal -->
+<div class="modal-overlay" id="areas-overlay" onclick="if(event.target===this)closeAreasModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Manage Areas</h3>
+      <button class="btn-close" onclick="closeAreasModal()">×</button>
+    </div>
+    <p style="font-size:13px;color:#888;margin-bottom:16px">Rename, add, or delete areas. Tasks in a deleted area move to Unassigned.</p>
+    <div id="area-rows"></div>
+    <button class="btn-add-area" onclick="addAreaRow()">+ Add Area</button>
+    <div class="modal-actions">
+      <button class="btn-save" onclick="saveAreas()">Save</button>
+    </div>
+  </div>
+</div>
+
 <script>
-const ROOM_LABELS = { kitchen:'🍳 Kitchen', bathroom:'🚿 Bathroom', bedroom:'🛏 Bedroom', living:'🛋 Living Room', garage:'🚗 Garage', exterior:'🌿 Exterior', other:'📦 Other' };
+const FIXED_AREA = 'unassigned';
+const DEFAULT_AREAS = {
+  unassigned: '📦 Unassigned',
+  kitchen: '🍳 Kitchen',
+  bathroom: '🚿 Bathroom',
+  bedroom: '🛏 Bedroom',
+  living: '🛋 Living Room',
+  garage: '🚗 Garage',
+  exterior: '🌿 Exterior',
+  other: '📦 Other'
+};
 const PRI_LABELS = { high:'🔴 High', medium:'⚡ Medium', low:'🔵 Low' };
+const REC_LABELS = { daily:'Daily', weekly:'Weekly', monthly:'Monthly', yearly:'Yearly' };
 const PRI_ORDER = { high:0, medium:1, low:2 };
 const API = 'https://api.github.com';
 const FILE = 'projects.json';
 
-let projects = [], fileSha = null, saveTimer = null;
-let statusFilter = 'all', roomFilter = 'all';
+let projects = [], areaNames = {...DEFAULT_AREAS}, fileSha = null, saveTimer = null;
+let statusFilter = 'todo', roomFilter = 'all';
 let editingId = null, editDone = false;
+// temp area rows while editing
+let tempAreas = [];
 
 const today = new Date(); today.setHours(0,0,0,0);
 const todayStr = today.toISOString().slice(0,10);
 
-function getConfig() { return { token: localStorage.getItem('ghp_token'), owner: localStorage.getItem('ghp_owner'), repo: localStorage.getItem('ghp_repo') }; }
-function headers() { return { Authorization:`token ${getConfig().token}`, Accept:'application/vnd.github.v3+json', 'Content-Type':'application/json' }; }
+function getConfig(){return{token:localStorage.getItem('ghp_token'),owner:localStorage.getItem('ghp_owner'),repo:localStorage.getItem('ghp_repo')};}
+function headers(){return{Authorization:`token ${getConfig().token}`,Accept:'application/vnd.github.v3+json','Content-Type':'application/json'};}
 
-async function connect() {
-  const owner = document.getElementById('setup-owner').value.trim();
-  const repo = document.getElementById('setup-repo').value.trim();
-  const token = document.getElementById('setup-token').value.trim();
-  if (!owner||!repo||!token) return alert('Please fill in all fields.');
-  localStorage.setItem('ghp_owner',owner); localStorage.setItem('ghp_repo',repo); localStorage.setItem('ghp_token',token);
+async function connect(){
+  const owner=document.getElementById('setup-owner').value.trim();
+  const repo=document.getElementById('setup-repo').value.trim();
+  const token=document.getElementById('setup-token').value.trim();
+  if(!owner||!repo||!token)return alert('Please fill in all fields.');
+  localStorage.setItem('ghp_owner',owner);localStorage.setItem('ghp_repo',repo);localStorage.setItem('ghp_token',token);
   await init();
 }
 
-async function init() {
-  const {token,owner,repo} = getConfig();
-  if (!token||!owner||!repo) { show('setup'); return; }
+async function init(){
+  const{token,owner,repo}=getConfig();
+  if(!token||!owner||!repo){show('setup');return;}
   show('loading');
-  try { await loadProjects(); show('main'); render(); }
-  catch(e) { ['ghp_token','ghp_owner','ghp_repo'].forEach(k=>localStorage.removeItem(k)); show('setup'); alert('Could not connect. Check your username, repo, and token.'); }
+  try{await loadData();show('main');rebuildSelects();renderRoomFilters();render();}
+  catch(e){['ghp_token','ghp_owner','ghp_repo'].forEach(k=>localStorage.removeItem(k));show('setup');alert('Could not connect. Check your username, repo, and token.');}
 }
 
-function show(s) {
-  document.getElementById('setup-screen').style.display = s==='setup'?'block':'none';
-  document.getElementById('loading-screen').style.display = s==='loading'?'block':'none';
-  document.getElementById('main-screen').style.display = s==='main'?'block':'none';
+function show(s){
+  document.getElementById('setup-screen').style.display=s==='setup'?'block':'none';
+  document.getElementById('loading-screen').style.display=s==='loading'?'block':'none';
+  document.getElementById('main-screen').style.display=s==='main'?'block':'none';
 }
 
-async function loadProjects() {
-  const {owner,repo} = getConfig();
-  const res = await fetch(`${API}/repos/${owner}/${repo}/contents/${FILE}`, {headers:headers()});
-  if (res.status===404) {
-    projects = [
-      {id:'6',task:'Clean out pantry',room:'kitchen',priority:'medium',due:'',done:false,date:todayStr},
-      {id:'5',task:'Clean out fridge before Ireland trip',room:'kitchen',priority:'high',due:'',done:false,date:todayStr},
-      {id:'4',task:'Bathroom counter grout',room:'bathroom',priority:'medium',due:'',done:false,date:todayStr},
-      {id:'3',task:'Clean AC unit circulating pumps',room:'other',priority:'medium',due:'',done:false,date:todayStr},
-      {id:'2',task:'Check AC unit functionality',room:'other',priority:'high',due:'',done:false,date:todayStr},
-      {id:'1',task:'Finish paintings in the kitchen',room:'kitchen',priority:'low',due:'',done:false,date:todayStr}
+async function loadData(){
+  const{owner,repo}=getConfig();
+  const res=await fetch(`${API}/repos/${owner}/${repo}/contents/${FILE}`,{headers:headers()});
+  if(res.status===404){
+    projects=[
+      {id:'6',task:'Clean out pantry',room:'kitchen',priority:'medium',due:'',recurrence:'none',done:false,date:todayStr},
+      {id:'5',task:'Clean out fridge before Ireland trip',room:'kitchen',priority:'high',due:'',recurrence:'none',done:false,date:todayStr},
+      {id:'4',task:'Bathroom counter grout',room:'bathroom',priority:'medium',due:'',recurrence:'none',done:false,date:todayStr},
+      {id:'3',task:'Clean AC unit circulating pumps',room:'other',priority:'medium',due:'',recurrence:'none',done:false,date:todayStr},
+      {id:'2',task:'Check AC unit functionality',room:'other',priority:'high',due:'',recurrence:'none',done:false,date:todayStr},
+      {id:'1',task:'Finish paintings in the kitchen',room:'kitchen',priority:'low',due:'',recurrence:'none',done:false,date:todayStr}
     ];
-    fileSha=null; await saveNow(); return;
+    areaNames={...DEFAULT_AREAS};fileSha=null;await saveNow();return;
   }
-  if (!res.ok) throw new Error('GitHub error: '+res.status);
-  const data = await res.json();
-  fileSha = data.sha;
-  projects = JSON.parse(atob(data.content.replace(/\n/g,'')));
+  if(!res.ok)throw new Error('GitHub error: '+res.status);
+  const data=await res.json();
+  fileSha=data.sha;
+  const parsed=JSON.parse(atob(data.content.replace(/\n/g,'')));
+  if(Array.isArray(parsed)){projects=parsed;areaNames={...DEFAULT_AREAS};}
+  else{projects=parsed.projects||[];areaNames={...DEFAULT_AREAS,...(parsed.areaNames||{})};}
+  // ensure unassigned always exists
+  if(!areaNames[FIXED_AREA])areaNames[FIXED_AREA]='📦 Unassigned';
+  projects=projects.map(p=>({recurrence:'none',...p}));
 }
 
-async function saveNow() {
-  const {owner,repo} = getConfig();
-  setSyncState('syncing');
-  try {
-    const body = {message:'Update projects', content:btoa(unescape(encodeURIComponent(JSON.stringify(projects,null,2))))};
-    if (fileSha) body.sha = fileSha;
-    const res = await fetch(`${API}/repos/${owner}/${repo}/contents/${FILE}`, {method:'PUT',headers:headers(),body:JSON.stringify(body)});
-    if (!res.ok) throw new Error('Save failed');
-    fileSha = (await res.json()).content.sha;
-    setSyncState('synced');
-  } catch(e) { setSyncState('error'); showError('Could not save. Check your connection.'); }
-}
+function dataPayload(){return{areaNames,projects};}
 
-function scheduleSave() { setSyncState('syncing'); clearTimeout(saveTimer); saveTimer=setTimeout(saveNow,900); }
-function setSyncState(s) {
+async function saveNow(){
+  const{owner,repo}=getConfig();setSyncState('syncing');
+  try{
+    const body={message:'Update projects',content:btoa(unescape(encodeURIComponent(JSON.stringify(dataPayload(),null,2))))};
+    if(fileSha)body.sha=fileSha;
+    const res=await fetch(`${API}/repos/${owner}/${repo}/contents/${FILE}`,{method:'PUT',headers:headers(),body:JSON.stringify(body)});
+    if(!res.ok)throw new Error('Save failed');
+    fileSha=(await res.json()).content.sha;setSyncState('synced');
+  }catch(e){setSyncState('error');showBanner('error','Could not save. Check your connection.');}
+}
+function scheduleSave(){setSyncState('syncing');clearTimeout(saveTimer);saveTimer=setTimeout(saveNow,900);}
+function setSyncState(s){
   document.getElementById('sync-dot').className='sync-dot'+(s==='syncing'?' syncing':s==='error'?' error':'');
   document.getElementById('sync-label').textContent=s==='syncing'?'Saving…':s==='error'?'Error':'Synced';
 }
-function showError(msg) { const el=document.getElementById('error-banner'); el.textContent=msg; el.style.display='block'; setTimeout(()=>el.style.display='none',5000); }
-function signOut() { if(!confirm('Disconnect? Projects stay saved on GitHub.'))return; ['ghp_token','ghp_owner','ghp_repo'].forEach(k=>localStorage.removeItem(k)); location.reload(); }
+function showBanner(type,msg){
+  const el=document.getElementById(type==='error'?'error-banner':'info-banner');
+  el.textContent=msg;el.style.display='block';setTimeout(()=>el.style.display='none',4000);
+}
+function signOut(){if(!confirm('Disconnect? Projects stay saved on GitHub.'))return;['ghp_token','ghp_owner','ghp_repo'].forEach(k=>localStorage.removeItem(k));location.reload();}
 
-function setStatusFilter(f,btn) { statusFilter=f; document.querySelectorAll('#status-filters .filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); render(); }
-function setRoomFilter(f,btn) { roomFilter=f; document.querySelectorAll('#room-filters .filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); render(); }
+// Area helpers
+function areaKeys(){return Object.keys(areaNames);}
 
-function addProject() {
-  const ti=document.getElementById('input-task'); const task=ti.value.trim();
-  if(!task){ti.focus();return;}
-  projects.unshift({id:Date.now().toString(),task,room:document.getElementById('input-room').value,priority:document.getElementById('input-priority').value,due:document.getElementById('input-due').value,done:false,date:todayStr});
-  ti.value=''; document.getElementById('input-due').value=''; ti.focus(); render(); scheduleSave();
+function rebuildSelects(){
+  ['input-room','edit-room'].forEach(id=>{
+    const sel=document.getElementById(id);if(!sel)return;
+    const cur=sel.value;
+    sel.innerHTML=areaKeys().map(k=>`<option value="${esc(k)}">${esc(areaNames[k])}</option>`).join('');
+    sel.value=areaKeys().includes(cur)?cur:FIXED_AREA;
+  });
 }
 
-function toggleDone(id) { const p=projects.find(p=>p.id===id); if(p){p.done=!p.done;render();scheduleSave();} }
+function renderRoomFilters(){
+  const row=document.getElementById('room-filters');
+  row.innerHTML=`<button class="filter-btn ${roomFilter==='all'?'active':''}" onclick="setRoomFilter('all',this)">All</button>`
+    +areaKeys().map(k=>`<button class="filter-btn ${roomFilter===k?'active':''}" onclick="setRoomFilter(${JSON.stringify(k)},this)">${esc(areaNames[k])}</button>`).join('');
+}
 
-function openEdit(id) {
-  const p = projects.find(p=>p.id===id); if(!p)return;
-  editingId=id; editDone=p.done;
+// Manage Areas modal
+function openManageAreas(){
+  tempAreas=areaKeys().map(k=>({key:k,label:areaNames[k]}));
+  renderAreaRows();
+  document.getElementById('areas-overlay').classList.add('open');
+}
+function closeAreasModal(){document.getElementById('areas-overlay').classList.remove('open');}
+
+function renderAreaRows(){
+  const container=document.getElementById('area-rows');
+  container.innerHTML=tempAreas.map((a,i)=>`
+    <div class="area-row" id="arow-${i}">
+      <input type="text" value="${esc(a.label)}" placeholder="Area name"
+        ${a.key===FIXED_AREA?'disabled':''} oninput="tempAreas[${i}].label=this.value"/>
+      ${a.key===FIXED_AREA
+        ?'<span class="area-fixed-label">fixed</span>'
+        :`<button class="btn-del-area" onclick="deleteAreaRow(${i})" title="Delete">×</button>`}
+    </div>`).join('');
+}
+
+function addAreaRow(){
+  const key='area_'+Date.now();
+  tempAreas.push({key,label:''});
+  renderAreaRows();
+  // focus new input
+  setTimeout(()=>{
+    const rows=document.querySelectorAll('#area-rows .area-row input:not([disabled])');
+    if(rows.length)rows[rows.length-1].focus();
+  },50);
+}
+
+function deleteAreaRow(i){
+  const a=tempAreas[i];
+  if(a.key===FIXED_AREA)return;
+  tempAreas.splice(i,1);
+  renderAreaRows();
+}
+
+function saveAreas(){
+  // collect new area map
+  const newNames={};
+  tempAreas.forEach(a=>{
+    const label=a.label.trim();
+    if(label||a.key===FIXED_AREA)newNames[a.key]=label||a.label;
+  });
+  if(!newNames[FIXED_AREA])newNames[FIXED_AREA]='📦 Unassigned';
+
+  // figure out which keys were removed
+  const removedKeys=Object.keys(areaNames).filter(k=>!newNames[k]);
+  if(removedKeys.length){
+    // move tasks in removed areas to unassigned
+    projects=projects.map(p=>removedKeys.includes(p.room)?{...p,room:FIXED_AREA}:p);
+  }
+
+  areaNames=newNames;
+  closeAreasModal();
+  rebuildSelects();
+  renderRoomFilters();
+  render();
+  scheduleSave();
+}
+
+function setStatusFilter(f,btn){statusFilter=f;document.querySelectorAll('#status-filters .filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
+function setRoomFilter(f,btn){roomFilter=f;document.querySelectorAll('#room-filters .filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
+
+function addProject(){
+  const ti=document.getElementById('input-task');const task=ti.value.trim();
+  if(!task){ti.focus();return;}
+  projects.unshift({id:Date.now().toString(),task,
+    room:document.getElementById('input-room').value||FIXED_AREA,
+    priority:document.getElementById('input-priority').value,
+    due:document.getElementById('input-due').value,
+    recurrence:document.getElementById('input-recurrence').value,
+    done:false,date:todayStr});
+  ti.value='';document.getElementById('input-due').value='';document.getElementById('input-recurrence').value='none';
+  ti.focus();render();scheduleSave();
+}
+
+function nextDueDate(due,rec){
+  const b=due?new Date(due+'T00:00:00'):new Date(today);
+  if(rec==='daily')b.setDate(b.getDate()+1);
+  else if(rec==='weekly')b.setDate(b.getDate()+7);
+  else if(rec==='monthly')b.setMonth(b.getMonth()+1);
+  else if(rec==='yearly')b.setFullYear(b.getFullYear()+1);
+  return b.toISOString().slice(0,10);
+}
+
+function toggleDone(id){
+  const p=projects.find(p=>p.id===id);if(!p)return;
+  if(!p.done&&p.recurrence&&p.recurrence!=='none'){
+    const next=nextDueDate(p.due,p.recurrence);p.due=next;
+    const label=new Date(next+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    showBanner('info',`🔁 "${p.task}" rescheduled to ${label}`);
+  }else{p.done=!p.done;}
+  render();scheduleSave();
+}
+
+function openEdit(id){
+  const p=projects.find(p=>p.id===id);if(!p)return;
+  editingId=id;editDone=p.done;
   document.getElementById('edit-task').value=p.task;
-  document.getElementById('edit-room').value=p.room||'other';
   document.getElementById('edit-priority').value=p.priority||'medium';
   document.getElementById('edit-due').value=p.due||'';
+  document.getElementById('edit-recurrence').value=p.recurrence||'none';
+  rebuildSelects();
+  document.getElementById('edit-room').value=areaKeys().includes(p.room)?p.room:FIXED_AREA;
   setEditStatus(p.done);
   document.getElementById('modal-overlay').classList.add('open');
 }
-
-function setEditStatus(done) {
-  editDone=done;
-  document.getElementById('status-todo').classList.toggle('active',!done);
-  document.getElementById('status-done').classList.toggle('active',done);
-}
-
-function closeModal(e) { if(e.target===document.getElementById('modal-overlay'))closeModalDirect(); }
-function closeModalDirect() { document.getElementById('modal-overlay').classList.remove('open'); editingId=null; }
-
-function saveEdit() {
-  const p=projects.find(p=>p.id===editingId); if(!p)return;
+function setEditStatus(done){editDone=done;document.getElementById('status-todo-opt').classList.toggle('active',!done);document.getElementById('status-done-opt').classList.toggle('active',done);}
+function closeEditModal(){document.getElementById('modal-overlay').classList.remove('open');editingId=null;}
+function saveEdit(){
+  const p=projects.find(p=>p.id===editingId);if(!p)return;
   p.task=document.getElementById('edit-task').value.trim()||p.task;
   p.room=document.getElementById('edit-room').value;
   p.priority=document.getElementById('edit-priority').value;
   p.due=document.getElementById('edit-due').value;
+  p.recurrence=document.getElementById('edit-recurrence').value;
   p.done=editDone;
-  closeModalDirect(); render(); scheduleSave();
+  closeEditModal();render();scheduleSave();
 }
+function deleteFromModal(){if(!confirm('Delete this project?'))return;projects=projects.filter(p=>p.id!==editingId);closeEditModal();render();scheduleSave();}
 
-function deleteFromModal() {
-  if(!confirm('Delete this project?'))return;
-  projects=projects.filter(p=>p.id!==editingId);
-  closeModalDirect(); render(); scheduleSave();
+function isOverdue(p){return !p.done&&p.due&&new Date(p.due+'T00:00:00')<today;}
+function isDueSoon(p){
+  if(!p.due||p.done)return false;
+  const diff=Math.round((new Date(p.due+'T00:00:00')-today)/86400000);
+  return diff>=0&&diff<=7;
 }
-
-function isOverdue(p) { return !p.done&&p.due&&new Date(p.due+'T00:00:00')<today; }
-function dueInfo(due) {
+function dueInfo(due){
   if(!due)return null;
-  const d=new Date(due+'T00:00:00'); const diff=Math.round((d-today)/86400000);
+  const d=new Date(due+'T00:00:00');const diff=Math.round((d-today)/86400000);
   const label=diff===0?'📅 Today':diff===1?'📅 Tomorrow':diff<0?`📅 ${Math.abs(diff)}d overdue`:`📅 ${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}`;
-  return {label,cls:diff<0?'overdue':diff<=3?'soon':''};
+  return{label,cls:diff<0?'overdue':diff<=7?'soon':''};
 }
-function sortByPriority(list) {
-  return [...list].sort((a,b)=>{
+function sortByPriority(list){
+  return[...list].sort((a,b)=>{
     const pd=(PRI_ORDER[a.priority||'medium']||1)-(PRI_ORDER[b.priority||'medium']||1);
     if(pd!==0)return pd;
     if(a.due&&b.due)return new Date(a.due)-new Date(b.due);
-    if(a.due)return -1; if(b.due)return 1; return 0;
+    if(a.due)return -1;if(b.due)return 1;return 0;
   });
 }
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-function render() {
+function render(){
   const list=document.getElementById('projects-list');
   let filtered=projects.filter(p=>{
-    const sOk=statusFilter==='all'?true:statusFilter==='done'?p.done:statusFilter==='todo'?!p.done:statusFilter==='high'?(p.priority==='high'&&!p.done):statusFilter==='overdue'?isOverdue(p):true;
+    const sOk=statusFilter==='all'?true:statusFilter==='done'?p.done:statusFilter==='todo'?!p.done
+      :statusFilter==='high'?(p.priority==='high'&&!p.done):statusFilter==='overdue'?isOverdue(p)
+      :statusFilter==='soon'?isDueSoon(p):statusFilter==='recurring'?(p.recurrence&&p.recurrence!=='none'):true;
     const rOk=roomFilter==='all'||p.room===roomFilter;
     return sOk&&rOk;
   });
@@ -417,19 +552,20 @@ function render() {
   if(!filtered.length){list.innerHTML='<div class="empty">Nothing here.</div>';return;}
   list.innerHTML=filtered.map(p=>{
     const due=dueInfo(p.due);
-    return `<div class="project-card ${p.done?'done':''} pri-${esc(p.priority||'medium')}">
+    const rec=p.recurrence&&p.recurrence!=='none';
+    const areaLabel=areaNames[p.room]||p.room||'Unassigned';
+    return`<div class="project-card ${p.done?'done':''} pri-${esc(p.priority||'medium')}">
       <div class="checkbox ${p.done?'checked':''}" onclick="toggleDone('${esc(p.id)}')"></div>
       <div class="project-info">
         <div class="project-task">${esc(p.task)}</div>
         <div class="project-meta">
-          <span class="tag room-${esc(p.room)}">${ROOM_LABELS[p.room]||p.room}</span>
+          <span class="tag area-tag">${esc(areaLabel)}</span>
           <span class="tag pri-tag-${esc(p.priority||'medium')}">${PRI_LABELS[p.priority||'medium']}</span>
+          ${rec?`<span class="tag rec-tag">🔁 ${REC_LABELS[p.recurrence]}</span>`:''}
           ${due?`<span class="due-tag ${due.cls}">${due.label}</span>`:''}
         </div>
       </div>
-      <div class="card-actions">
-        <button class="btn-icon" onclick="openEdit('${esc(p.id)}')" title="Edit">✏️</button>
-      </div>
+      <button class="btn-icon" onclick="openEdit('${esc(p.id)}')" title="Edit">✏️</button>
     </div>`;
   }).join('');
 }
