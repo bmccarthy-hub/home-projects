@@ -1,0 +1,56 @@
+[
+  {
+    "id": "6",
+    "task": "Clean out pantry",
+    "room": "kitchen",
+    "priority": "medium",
+    "due": "",
+    "done": false,
+    "date": "2026-07-14"
+  },
+  {
+    "id": "5",
+    "task": "Clean out fridge before Ireland trip",
+    "room": "kitchen",
+    "priority": "high",
+    "due": "",
+    "done": false,
+    "date": "2026-07-14"
+  },
+  {
+    "id": "4",
+    "task": "Bathroom counter grout",
+    "room": "bathroom",
+    "priority": "medium",
+    "due": "",
+    "done": false,
+    "date": "2026-07-14"
+  },
+  {
+    "id": "3",
+    "task": "Clean AC unit circulating pumps",
+    "room": "other",
+    "priority": "medium",
+    "due": "",
+    "done": false,
+    "date": "2026-07-14"
+  },
+  {
+    "id": "2",
+    "task": "Check AC unit functionality",
+    "room": "other",
+    "priority": "high",
+    "due": "",
+    "done": false,
+    "date": "2026-07-14"
+  },
+  {
+    "id": "1",
+    "task": "Finish paintings in the kitchen",
+    "room": "kitchen",
+    "priority": "low",
+    "due": "",
+    "done": false,
+    "date": "2026-07-14"
+  }
+]
