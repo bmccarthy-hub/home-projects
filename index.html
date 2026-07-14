@@ -9,7 +9,6 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f6f3; color: #1a1a1a; min-height: 100vh; padding: 24px 20px; }
 
-  /* Setup screen */
   .setup-screen { max-width: 420px; margin: 60px auto; background: #fff; border: 1px solid #e8e8e8; border-radius: 16px; padding: 32px; }
   .setup-screen h1 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
   .setup-screen p { font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.5; }
@@ -21,12 +20,10 @@
   .btn-connect:hover { background: #333; }
   .setup-note { font-size: 12px; color: #aaa; margin-top: 16px; text-align: center; line-height: 1.5; }
 
-  /* Loading */
   .loading-screen { text-align: center; padding: 80px 20px; color: #aaa; font-size: 15px; }
   .spinner { width: 28px; height: 28px; border: 3px solid #eee; border-top-color: #1a1a1a; border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 16px; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* Main */
   .main-screen { display: none; }
   .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
   .top-bar h1 { font-size: 22px; font-weight: 700; }
@@ -51,9 +48,12 @@
   .btn-add { padding: 9px 18px; background: #1a1a1a; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
   .btn-add:hover { background: #333; }
 
-  .filters { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-  .filter-btn { padding: 6px 14px; border: 1px solid #ddd; border-radius: 20px; background: #fff; font-size: 13px; cursor: pointer; color: #555; }
+  .filter-section { margin-bottom: 14px; }
+  .filter-label { font-size: 11px; font-weight: 600; color: #bbb; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 7px; }
+  .filter-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn { padding: 6px 13px; border: 1px solid #ddd; border-radius: 20px; background: #fff; font-size: 13px; cursor: pointer; color: #555; white-space: nowrap; }
   .filter-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .filter-divider { height: 1px; background: #f0f0f0; margin: 10px 0; }
 
   .projects-list { display: flex; flex-direction: column; gap: 8px; }
   .project-card { background: #fff; border: 1px solid #e8e8e8; border-left: 3px solid transparent; border-radius: 12px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px; transition: box-shadow 0.15s; }
@@ -93,7 +93,6 @@
 </head>
 <body>
 
-<!-- Setup Screen -->
 <div id="setup-screen" class="setup-screen" style="display:none">
   <h1>🏠 Connect to GitHub</h1>
   <p>Your projects will be saved to your GitHub repository so they stay in sync across all your devices.</p>
@@ -113,13 +112,11 @@
   <p class="setup-note">Your token is saved only in this browser and never sent anywhere except GitHub.</p>
 </div>
 
-<!-- Loading Screen -->
 <div id="loading-screen" class="loading-screen" style="display:none">
   <div class="spinner"></div>
   Loading your projects…
 </div>
 
-<!-- Main Screen -->
 <div id="main-screen" class="main-screen">
   <div class="top-bar">
     <h1>🏠 Home Improvement</h1>
@@ -128,7 +125,7 @@
         <div class="sync-dot" id="sync-dot"></div>
         <span id="sync-label">Synced</span>
       </div>
-      <button class="btn-signout" onclick="signOut()" title="Disconnect">Disconnect</button>
+      <button class="btn-signout" onclick="signOut()">Disconnect</button>
     </div>
   </div>
 
@@ -165,12 +162,27 @@
     </div>
   </div>
 
-  <div class="filters">
-    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
-    <button class="filter-btn" onclick="setFilter('todo',this)">To Do</button>
-    <button class="filter-btn" onclick="setFilter('done',this)">Done</button>
-    <button class="filter-btn" onclick="setFilter('high',this)">🔴 High</button>
-    <button class="filter-btn" onclick="setFilter('overdue',this)">Overdue</button>
+  <div class="filter-section">
+    <div class="filter-label">Status</div>
+    <div class="filter-row" id="status-filters">
+      <button class="filter-btn active" onclick="setStatusFilter('all',this)">All</button>
+      <button class="filter-btn" onclick="setStatusFilter('todo',this)">To Do</button>
+      <button class="filter-btn" onclick="setStatusFilter('done',this)">Done</button>
+      <button class="filter-btn" onclick="setStatusFilter('high',this)">🔴 High</button>
+      <button class="filter-btn" onclick="setStatusFilter('overdue',this)">Overdue</button>
+    </div>
+    <div class="filter-divider"></div>
+    <div class="filter-label">Area</div>
+    <div class="filter-row" id="room-filters">
+      <button class="filter-btn active" onclick="setRoomFilter('all',this)">All Areas</button>
+      <button class="filter-btn" onclick="setRoomFilter('kitchen',this)">🍳 Kitchen</button>
+      <button class="filter-btn" onclick="setRoomFilter('bathroom',this)">🚿 Bathroom</button>
+      <button class="filter-btn" onclick="setRoomFilter('bedroom',this)">🛏 Bedroom</button>
+      <button class="filter-btn" onclick="setRoomFilter('living',this)">🛋 Living Room</button>
+      <button class="filter-btn" onclick="setRoomFilter('garage',this)">🚗 Garage</button>
+      <button class="filter-btn" onclick="setRoomFilter('exterior',this)">🌿 Exterior</button>
+      <button class="filter-btn" onclick="setRoomFilter('other',this)">📦 Other</button>
+    </div>
   </div>
 
   <div class="projects-list" id="projects-list"></div>
@@ -179,30 +191,25 @@
 <script>
 const ROOM_LABELS = { kitchen:'🍳 Kitchen', bathroom:'🚿 Bathroom', bedroom:'🛏 Bedroom', living:'🛋 Living Room', garage:'🚗 Garage', exterior:'🌿 Exterior', other:'📦 Other' };
 const PRI_LABELS = { high:'🔴 High', medium:'⚡ Medium', low:'🔵 Low' };
+const PRI_ORDER = { high: 0, medium: 1, low: 2 };
 const API = 'https://api.github.com';
 const FILE = 'projects.json';
 
 let projects = [];
 let fileSha = null;
 let saveTimer = null;
-let currentFilter = 'all';
+let statusFilter = 'all';
+let roomFilter = 'all';
 
 const today = new Date(); today.setHours(0,0,0,0);
 const todayStr = today.toISOString().slice(0,10);
 
 function getConfig() {
-  return {
-    token: localStorage.getItem('ghp_token'),
-    owner: localStorage.getItem('ghp_owner'),
-    repo: localStorage.getItem('ghp_repo')
-  };
+  return { token: localStorage.getItem('ghp_token'), owner: localStorage.getItem('ghp_owner'), repo: localStorage.getItem('ghp_repo') };
 }
-
 function headers() {
-  const { token } = getConfig();
-  return { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' };
+  return { Authorization: `token ${getConfig().token}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' };
 }
-
 async function connect() {
   const owner = document.getElementById('setup-owner').value.trim();
   const repo = document.getElementById('setup-repo').value.trim();
@@ -213,35 +220,26 @@ async function connect() {
   localStorage.setItem('ghp_token', token);
   await init();
 }
-
 async function init() {
   const { token, owner, repo } = getConfig();
   if (!token || !owner || !repo) { show('setup'); return; }
   show('loading');
-  try {
-    await loadProjects();
-    show('main');
-    render();
-  } catch (e) {
-    localStorage.removeItem('ghp_token');
-    localStorage.removeItem('ghp_owner');
-    localStorage.removeItem('ghp_repo');
+  try { await loadProjects(); show('main'); render(); }
+  catch (e) {
+    ['ghp_token','ghp_owner','ghp_repo'].forEach(k => localStorage.removeItem(k));
     show('setup');
     alert('Could not connect to GitHub. Please check your username, repo name, and token.');
   }
 }
-
 function show(screen) {
   document.getElementById('setup-screen').style.display = screen === 'setup' ? 'block' : 'none';
   document.getElementById('loading-screen').style.display = screen === 'loading' ? 'block' : 'none';
   document.getElementById('main-screen').style.display = screen === 'main' ? 'block' : 'none';
 }
-
 async function loadProjects() {
   const { owner, repo } = getConfig();
   const res = await fetch(`${API}/repos/${owner}/${repo}/contents/${FILE}`, { headers: headers() });
   if (res.status === 404) {
-    // First time — seed with existing projects
     projects = [
       { id:'6', task:'Clean out pantry', room:'kitchen', priority:'medium', due:'', done:false, date:todayStr },
       { id:'5', task:'Clean out fridge before Ireland trip', room:'kitchen', priority:'high', due:'', done:false, date:todayStr },
@@ -250,16 +248,13 @@ async function loadProjects() {
       { id:'2', task:'Check AC unit functionality', room:'other', priority:'high', due:'', done:false, date:todayStr },
       { id:'1', task:'Finish paintings in the kitchen', room:'kitchen', priority:'low', due:'', done:false, date:todayStr }
     ];
-    fileSha = null;
-    await saveNow();
-    return;
+    fileSha = null; await saveNow(); return;
   }
   if (!res.ok) throw new Error('GitHub API error: ' + res.status);
   const data = await res.json();
   fileSha = data.sha;
   projects = JSON.parse(atob(data.content.replace(/\n/g, '')));
 }
-
 async function saveNow() {
   const { owner, repo } = getConfig();
   setSyncState('syncing');
@@ -267,45 +262,35 @@ async function saveNow() {
     const body = { message: 'Update projects', content: btoa(unescape(encodeURIComponent(JSON.stringify(projects, null, 2)))) };
     if (fileSha) body.sha = fileSha;
     const res = await fetch(`${API}/repos/${owner}/${repo}/contents/${FILE}`, { method: 'PUT', headers: headers(), body: JSON.stringify(body) });
-    if (!res.ok) throw new Error('Save failed: ' + res.status);
+    if (!res.ok) throw new Error('Save failed');
     const data = await res.json();
     fileSha = data.content.sha;
     setSyncState('synced');
-  } catch (e) {
-    setSyncState('error');
-    showError('Could not save changes. Check your connection and try again.');
-  }
+  } catch(e) { setSyncState('error'); showError('Could not save. Check your connection.'); }
 }
-
-function scheduleSave() {
-  setSyncState('syncing');
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(saveNow, 900);
-}
-
+function scheduleSave() { setSyncState('syncing'); clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 900); }
 function setSyncState(state) {
   const dot = document.getElementById('sync-dot');
   const label = document.getElementById('sync-label');
-  dot.className = 'sync-dot' + (state === 'syncing' ? ' syncing' : state === 'error' ? ' error' : '');
-  label.textContent = state === 'syncing' ? 'Saving…' : state === 'error' ? 'Error' : 'Synced';
+  dot.className = 'sync-dot' + (state==='syncing'?' syncing':state==='error'?' error':'');
+  label.textContent = state==='syncing' ? 'Saving…' : state==='error' ? 'Error' : 'Synced';
 }
-
-function showError(msg) {
-  const el = document.getElementById('error-banner');
-  el.textContent = msg;
-  el.style.display = 'block';
-  setTimeout(() => { el.style.display = 'none'; }, 5000);
-}
-
+function showError(msg) { const el = document.getElementById('error-banner'); el.textContent = msg; el.style.display = 'block'; setTimeout(()=>{ el.style.display='none'; }, 5000); }
 function signOut() {
-  if (!confirm('Disconnect from GitHub? Your projects stay saved on GitHub.')) return;
+  if (!confirm('Disconnect? Your projects stay saved on GitHub.')) return;
   ['ghp_token','ghp_owner','ghp_repo'].forEach(k => localStorage.removeItem(k));
   location.reload();
 }
 
-function setFilter(f, btn) {
-  currentFilter = f;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+function setStatusFilter(f, btn) {
+  statusFilter = f;
+  document.querySelectorAll('#status-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+function setRoomFilter(f, btn) {
+  roomFilter = f;
+  document.querySelectorAll('#room-filters .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   render();
 }
@@ -315,48 +300,48 @@ function addProject() {
   const task = ti.value.trim();
   if (!task) { ti.focus(); return; }
   projects.unshift({ id: Date.now().toString(), task, room: document.getElementById('input-room').value, priority: document.getElementById('input-priority').value, due: document.getElementById('input-due').value, done: false, date: todayStr });
-  ti.value = '';
-  document.getElementById('input-due').value = '';
-  ti.focus();
-  render();
-  scheduleSave();
+  ti.value = ''; document.getElementById('input-due').value = ''; ti.focus();
+  render(); scheduleSave();
 }
+function toggleDone(id) { const p = projects.find(p=>p.id===id); if(p){p.done=!p.done; render(); scheduleSave();} }
+function deleteProject(id) { projects=projects.filter(p=>p.id!==id); render(); scheduleSave(); }
 
-function toggleDone(id) {
-  const p = projects.find(p => p.id === id);
-  if (p) { p.done = !p.done; render(); scheduleSave(); }
-}
-
-function deleteProject(id) {
-  projects = projects.filter(p => p.id !== id);
-  render();
-  scheduleSave();
-}
-
+function isOverdue(p) { return !p.done && p.due && new Date(p.due+'T00:00:00') < today; }
 function dueInfo(due) {
   if (!due) return null;
-  const d = new Date(due + 'T00:00:00');
+  const d = new Date(due+'T00:00:00');
   const diff = Math.round((d - today) / 86400000);
-  const label = diff === 0 ? '📅 Today' : diff === 1 ? '📅 Tomorrow' : diff < 0 ? `📅 ${Math.abs(diff)}d overdue` : `📅 ${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}`;
-  return { label, cls: diff < 0 ? 'overdue' : diff <= 3 ? 'soon' : '' };
+  const label = diff===0 ? '📅 Today' : diff===1 ? '📅 Tomorrow' : diff<0 ? `📅 ${Math.abs(diff)}d overdue` : `📅 ${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}`;
+  return { label, cls: diff<0 ? 'overdue' : diff<=3 ? 'soon' : '' };
 }
 
-function isOverdue(p) { return !p.done && p.due && new Date(p.due + 'T00:00:00') < today; }
+function sortByPriority(list) {
+  return [...list].sort((a, b) => {
+    const pd = (PRI_ORDER[a.priority||'medium']||1) - (PRI_ORDER[b.priority||'medium']||1);
+    if (pd !== 0) return pd;
+    // secondary: overdue first, then by due date
+    if (a.due && b.due) return new Date(a.due) - new Date(b.due);
+    if (a.due) return -1;
+    if (b.due) return 1;
+    return 0;
+  });
+}
 
 function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 function render() {
   const list = document.getElementById('projects-list');
-  const filtered = projects.filter(p => {
-    if (currentFilter === 'todo') return !p.done;
-    if (currentFilter === 'done') return p.done;
-    if (currentFilter === 'high') return p.priority === 'high' && !p.done;
-    if (currentFilter === 'overdue') return isOverdue(p);
-    return true;
+  let filtered = projects.filter(p => {
+    const statusOk = statusFilter==='all' ? true : statusFilter==='done' ? p.done : statusFilter==='todo' ? !p.done : statusFilter==='high' ? (p.priority==='high'&&!p.done) : statusFilter==='overdue' ? isOverdue(p) : true;
+    const roomOk = roomFilter==='all' || p.room===roomFilter;
+    return statusOk && roomOk;
   });
+  filtered = sortByPriority(filtered);
+
   document.getElementById('stat-total').textContent = projects.length;
-  document.getElementById('stat-todo').textContent = projects.filter(p => !p.done).length;
-  document.getElementById('stat-done').textContent = projects.filter(p => p.done).length;
+  document.getElementById('stat-todo').textContent = projects.filter(p=>!p.done).length;
+  document.getElementById('stat-done').textContent = projects.filter(p=>p.done).length;
+
   if (!filtered.length) { list.innerHTML = '<div class="empty">Nothing here.</div>'; return; }
   list.innerHTML = filtered.map(p => {
     const due = dueInfo(p.due);
@@ -376,7 +361,7 @@ function render() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('input-task')?.addEventListener('keydown', e => { if (e.key === 'Enter') addProject(); });
+  document.getElementById('input-task')?.addEventListener('keydown', e => { if(e.key==='Enter') addProject(); });
   init();
 });
 </script>
