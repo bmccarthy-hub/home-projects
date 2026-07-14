@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Improvement Projects</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f7f6f3; color: #1a1a1a; min-height: 100vh; padding: 24px 20px; }
+
+  /* Setup screen */
+  .setup-screen { max-width: 420px; margin: 60px auto; background: #fff; border: 1px solid #e8e8e8; border-radius: 16px; padding: 32px; }
+  .setup-screen h1 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .setup-screen p { font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.5; }
+  .setup-field { margin-bottom: 14px; }
+  .setup-field label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 5px; }
+  .setup-field input { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; background: #fafafa; color: #1a1a1a; outline: none; }
+  .setup-field input:focus { border-color: #6c63ff; background: #fff; }
+  .btn-connect { width: 100%; padding: 12px; background: #1a1a1a; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 6px; }
+  .btn-connect:hover { background: #333; }
+  .setup-note { font-size: 12px; color: #aaa; margin-top: 16px; text-align: center; line-height: 1.5; }
+
+  /* Loading */
+  .loading-screen { text-align: center; padding: 80px 20px; color: #aaa; font-size: 15px; }
+  .spinner { width: 28px; height: 28px; border: 3px solid #eee; border-top-color: #1a1a1a; border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto 16px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Main */
+  .main-screen { display: none; }
+  .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 8px; }
+  .top-bar h1 { font-size: 22px; font-weight: 700; }
+  .sync-status { font-size: 12px; color: #aaa; display: flex; align-items: center; gap: 5px; }
+  .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; }
+  .sync-dot.syncing { background: #f59e0b; animation: pulse 1s ease-in-out infinite; }
+  .sync-dot.error { background: #ef4444; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .stats { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+  .stat { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 10px 16px; font-size: 13px; color: #555; flex: 1; min-width: 80px; text-align: center; }
+  .stat strong { display: block; font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+
+  .add-form { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+  .add-form h2 { font-size: 13px; font-weight: 600; color: #999; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+  .form-row:last-child { margin-bottom: 0; }
+  .form-row input, .form-row select { flex: 1; min-width: 110px; padding: 9px 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; background: #fafafa; color: #1a1a1a; outline: none; }
+  .form-row input:focus, .form-row select:focus { border-color: #6c63ff; background: #fff; }
+  .form-row input[name="task"] { flex: 3; min-width: 180px; }
+  input[type="date"] { color: #555; }
+  .btn-add { padding: 9px 18px; background: #1a1a1a; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .btn-add:hover { background: #333; }
+
+  .filters { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+  .filter-btn { padding: 6px 14px; border: 1px solid #ddd; border-radius: 20px; background: #fff; font-size: 13px; cursor: pointer; color: #555; }
+  .filter-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+
+  .projects-list { display: flex; flex-direction: column; gap: 8px; }
+  .project-card { background: #fff; border: 1px solid #e8e8e8; border-left: 3px solid transparent; border-radius: 12px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px; transition: box-shadow 0.15s; }
+  .project-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .project-card.done { opacity: 0.5; }
+  .project-card.pri-high { border-left-color: #ef4444; }
+  .project-card.pri-medium { border-left-color: #f59e0b; }
+  .project-card.pri-low { border-left-color: #94a3b8; }
+  .checkbox { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #ddd; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; background: #fff; margin-top: 1px; }
+  .checkbox.checked { background: #22c55e; border-color: #22c55e; }
+  .checkbox.checked::after { content: '✓'; color: #fff; font-size: 11px; font-weight: 700; }
+  .project-info { flex: 1; min-width: 0; }
+  .project-task { font-size: 15px; font-weight: 500; color: #1a1a1a; margin-bottom: 4px; }
+  .project-card.done .project-task { text-decoration: line-through; color: #aaa; }
+  .project-meta { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .tag { font-size: 12px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+  .room-kitchen { background: #fef3c7; color: #92400e; }
+  .room-bathroom { background: #dbeafe; color: #1e40af; }
+  .room-bedroom { background: #fce7f3; color: #9d174d; }
+  .room-living { background: #dcfce7; color: #166534; }
+  .room-garage { background: #f3f4f6; color: #374151; }
+  .room-exterior { background: #e0f2fe; color: #0c4a6e; }
+  .room-other { background: #f3f4f6; color: #6b7280; }
+  .pri-tag-high { background: #fee2e2; color: #b91c1c; }
+  .pri-tag-medium { background: #fef9c3; color: #92400e; }
+  .pri-tag-low { background: #f1f5f9; color: #64748b; }
+  .due-tag { font-size: 12px; color: #888; }
+  .due-tag.overdue { color: #ef4444; font-weight: 600; }
+  .due-tag.soon { color: #f59e0b; font-weight: 600; }
+  .btn-delete { background: none; border: none; color: #ccc; font-size: 18px; cursor: pointer; padding: 4px 6px; border-radius: 4px; line-height: 1; flex-shrink: 0; }
+  .btn-delete:hover { color: #e55; }
+  .empty { text-align: center; padding: 40px 20px; color: #bbb; font-size: 14px; }
+  .error-banner { background: #fee2e2; color: #b91c1c; border-radius: 10px; padding: 12px 16px; font-size: 13px; margin-bottom: 16px; display: none; }
+  .btn-signout { background: none; border: none; font-size: 12px; color: #ccc; cursor: pointer; padding: 0; }
+  .btn-signout:hover { color: #888; }
+</style>
+</head>
+<body>
+
+<!-- Setup Screen -->
+<div id="setup-screen" class="setup-screen" style="display:none">
+  <h1>🏠 Connect to GitHub</h1>
+  <p>Your projects will be saved to your GitHub repository so they stay in sync across all your devices.</p>
+  <div class="setup-field">
+    <label>GitHub Username</label>
+    <input type="text" id="setup-owner" placeholder="e.g. brigitte" autocapitalize="none" autocorrect="off" />
+  </div>
+  <div class="setup-field">
+    <label>Repository Name</label>
+    <input type="text" id="setup-repo" value="home-projects" autocapitalize="none" autocorrect="off" />
+  </div>
+  <div class="setup-field">
+    <label>Personal Access Token</label>
+    <input type="password" id="setup-token" placeholder="ghp_..." autocapitalize="none" autocorrect="off" autocomplete="off" />
+  </div>
+  <button class="btn-connect" onclick="connect()">Connect</button>
+  <p class="setup-note">Your token is saved only in this browser and never sent anywhere except GitHub.</p>
+</div>
+
+<!-- Loading Screen -->
+<div id="loading-screen" class="loading-screen" style="display:none">
+  <div class="spinner"></div>
+  Loading your projects…
+</div>
+
+<!-- Main Screen -->
+<div id="main-screen" class="main-screen">
+  <div class="top-bar">
+    <h1>🏠 Home Improvement</h1>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="sync-status">
+        <div class="sync-dot" id="sync-dot"></div>
+        <span id="sync-label">Synced</span>
+      </div>
+      <button class="btn-signout" onclick="signOut()" title="Disconnect">Disconnect</button>
+    </div>
+  </div>
+
+  <div id="error-banner" class="error-banner"></div>
+
+  <div class="stats">
+    <div class="stat"><strong id="stat-total">0</strong>Total</div>
+    <div class="stat"><strong id="stat-todo">0</strong>To Do</div>
+    <div class="stat"><strong id="stat-done">0</strong>Done</div>
+  </div>
+
+  <div class="add-form">
+    <h2>Add a project</h2>
+    <div class="form-row">
+      <input type="text" name="task" id="input-task" placeholder="What needs to be done?" />
+    </div>
+    <div class="form-row">
+      <select id="input-room">
+        <option value="kitchen">🍳 Kitchen</option>
+        <option value="bathroom">🚿 Bathroom</option>
+        <option value="bedroom">🛏 Bedroom</option>
+        <option value="living">🛋 Living Room</option>
+        <option value="garage">🚗 Garage</option>
+        <option value="exterior">🌿 Exterior</option>
+        <option value="other">📦 Other</option>
+      </select>
+      <select id="input-priority">
+        <option value="medium">⚡ Medium</option>
+        <option value="high">🔴 High</option>
+        <option value="low">🔵 Low</option>
+      </select>
+      <input type="date" id="input-due" />
+      <button class="btn-add" onclick="addProject()">+ Add</button>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+    <button class="filter-btn" onclick="setFilter('todo',this)">To Do</button>
+    <button class="filter-btn" onclick="setFilter('done',this)">Done</button>
+    <button class="filter-btn" onclick="setFilter('high',this)">🔴 High</button>
+    <button class="filter-btn" onclick="setFilter('overdue',this)">Overdue</button>
+  </div>
+
+  <div class="projects-list" id="projects-list"></div>
+</div>
+
+<script>
+const ROOM_LABELS = { kitchen:'🍳 Kitchen', bathroom:'🚿 Bathroom', bedroom:'🛏 Bedroom', living:'🛋 Living Room', garage:'🚗 Garage', exterior:'🌿 Exterior', other:'📦 Other' };
+const PRI_LABELS = { high:'🔴 High', medium:'⚡ Medium', low:'🔵 Low' };
+const API = 'https://api.github.com';
+const FILE = 'projects.json';
+
+let projects = [];
+let fileSha = null;
+let saveTimer = null;
+let currentFilter = 'all';
+
+const today = new Date(); today.setHours(0,0,0,0);
+const todayStr = today.toISOString().slice(0,10);
+
+function getConfig() {
+  return {
+    token: localStorage.getItem('ghp_token'),
+    owner: localStorage.getItem('ghp_owner'),
+    repo: localStorage.getItem('ghp_repo')
+  };
+}
+
+function headers() {
+  const { token } = getConfig();
+  return { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' };
+}
+
+async function connect() {
+  const owner = document.getElementById('setup-owner').value.trim();
+  const repo = document.getElementById('setup-repo').value.trim();
+  const token = document.getElementById('setup-token').value.trim();
+  if (!owner || !repo || !token) return alert('Please fill in all fields.');
+  localStorage.setItem('ghp_owner', owner);
+  localStorage.setItem('ghp_repo', repo);
+  localStorage.setItem('ghp_token', token);
+  await init();
+}
+
+async function init() {
+  const { token, owner, repo } = getConfig();
+  if (!token || !owner || !repo) { show('setup'); return; }
+  show('loading');
+  try {
+    await loadProjects();
+    show('main');
+    render();
+  } catch (e) {
+    localStorage.removeItem('ghp_token');
+    localStorage.removeItem('ghp_owner');
+    localStorage.removeItem('ghp_repo');
+    show('setup');
+    alert('Could not connect to GitHub. Please check your username, repo name, and token.');
+  }
+}
+
+function show(screen) {
+  document.getElementById('setup-screen').style.display = screen === 'setup' ? 'block' : 'none';
+  document.getElementById('loading-screen').style.display = screen === 'loading' ? 'block' : 'none';
+  document.getElementById('main-screen').style.display = screen === 'main' ? 'block' : 'none';
+}
+
+async function loadProjects() {
+  const { owner, repo } = getConfig();
+  const res = await fetch(`${API}/repos/${owner}/${repo}/contents/${FILE}`, { headers: headers() });
+  if (res.status === 404) {
+    // First time — seed with existing projects
+    projects = [
+      { id:'6', task:'Clean out pantry', room:'kitchen', priority:'medium', due:'', done:false, date:todayStr },
+      { id:'5', task:'Clean out fridge before Ireland trip', room:'kitchen', priority:'high', due:'', done:false, date:todayStr },
+      { id:'4', task:'Bathroom counter grout', room:'bathroom', priority:'medium', due:'', done:false, date:todayStr },
+      { id:'3', task:'Clean AC unit circulating pumps', room:'other', priority:'medium', due:'', done:false, date:todayStr },
+      { id:'2', task:'Check AC unit functionality', room:'other', priority:'high', due:'', done:false, date:todayStr },
+      { id:'1', task:'Finish paintings in the kitchen', room:'kitchen', priority:'low', due:'', done:false, date:todayStr }
+    ];
+    fileSha = null;
+    await saveNow();
+    return;
+  }
+  if (!res.ok) throw new Error('GitHub API error: ' + res.status);
+  const data = await res.json();
+  fileSha = data.sha;
+  projects = JSON.parse(atob(data.content.replace(/\n/g, '')));
+}
+
+async function saveNow() {
+  const { owner, repo } = getConfig();
+  setSyncState('syncing');
+  try {
+    const body = { message: 'Update projects', content: btoa(unescape(encodeURIComponent(JSON.stringify(projects, null, 2)))) };
+    if (fileSha) body.sha = fileSha;
+    const res = await fetch(`${API}/repos/${owner}/${repo}/contents/${FILE}`, { method: 'PUT', headers: headers(), body: JSON.stringify(body) });
+    if (!res.ok) throw new Error('Save failed: ' + res.status);
+    const data = await res.json();
+    fileSha = data.content.sha;
+    setSyncState('synced');
+  } catch (e) {
+    setSyncState('error');
+    showError('Could not save changes. Check your connection and try again.');
+  }
+}
+
+function scheduleSave() {
+  setSyncState('syncing');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveNow, 900);
+}
+
+function setSyncState(state) {
+  const dot = document.getElementById('sync-dot');
+  const label = document.getElementById('sync-label');
+  dot.className = 'sync-dot' + (state === 'syncing' ? ' syncing' : state === 'error' ? ' error' : '');
+  label.textContent = state === 'syncing' ? 'Saving…' : state === 'error' ? 'Error' : 'Synced';
+}
+
+function showError(msg) {
+  const el = document.getElementById('error-banner');
+  el.textContent = msg;
+  el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 5000);
+}
+
+function signOut() {
+  if (!confirm('Disconnect from GitHub? Your projects stay saved on GitHub.')) return;
+  ['ghp_token','ghp_owner','ghp_repo'].forEach(k => localStorage.removeItem(k));
+  location.reload();
+}
+
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function addProject() {
+  const ti = document.getElementById('input-task');
+  const task = ti.value.trim();
+  if (!task) { ti.focus(); return; }
+  projects.unshift({ id: Date.now().toString(), task, room: document.getElementById('input-room').value, priority: document.getElementById('input-priority').value, due: document.getElementById('input-due').value, done: false, date: todayStr });
+  ti.value = '';
+  document.getElementById('input-due').value = '';
+  ti.focus();
+  render();
+  scheduleSave();
+}
+
+function toggleDone(id) {
+  const p = projects.find(p => p.id === id);
+  if (p) { p.done = !p.done; render(); scheduleSave(); }
+}
+
+function deleteProject(id) {
+  projects = projects.filter(p => p.id !== id);
+  render();
+  scheduleSave();
+}
+
+function dueInfo(due) {
+  if (!due) return null;
+  const d = new Date(due + 'T00:00:00');
+  const diff = Math.round((d - today) / 86400000);
+  const label = diff === 0 ? '📅 Today' : diff === 1 ? '📅 Tomorrow' : diff < 0 ? `📅 ${Math.abs(diff)}d overdue` : `📅 ${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}`;
+  return { label, cls: diff < 0 ? 'overdue' : diff <= 3 ? 'soon' : '' };
+}
+
+function isOverdue(p) { return !p.done && p.due && new Date(p.due + 'T00:00:00') < today; }
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function render() {
+  const list = document.getElementById('projects-list');
+  const filtered = projects.filter(p => {
+    if (currentFilter === 'todo') return !p.done;
+    if (currentFilter === 'done') return p.done;
+    if (currentFilter === 'high') return p.priority === 'high' && !p.done;
+    if (currentFilter === 'overdue') return isOverdue(p);
+    return true;
+  });
+  document.getElementById('stat-total').textContent = projects.length;
+  document.getElementById('stat-todo').textContent = projects.filter(p => !p.done).length;
+  document.getElementById('stat-done').textContent = projects.filter(p => p.done).length;
+  if (!filtered.length) { list.innerHTML = '<div class="empty">Nothing here.</div>'; return; }
+  list.innerHTML = filtered.map(p => {
+    const due = dueInfo(p.due);
+    return `<div class="project-card ${p.done?'done':''} pri-${esc(p.priority||'medium')}">
+      <div class="checkbox ${p.done?'checked':''}" onclick="toggleDone('${esc(p.id)}')"></div>
+      <div class="project-info">
+        <div class="project-task">${esc(p.task)}</div>
+        <div class="project-meta">
+          <span class="tag room-${esc(p.room)}">${ROOM_LABELS[p.room]||p.room}</span>
+          <span class="tag pri-tag-${esc(p.priority||'medium')}">${PRI_LABELS[p.priority||'medium']}</span>
+          ${due?`<span class="due-tag ${due.cls}">${due.label}</span>`:''}
+        </div>
+      </div>
+      <button class="btn-delete" onclick="deleteProject('${esc(p.id)}')" title="Remove">×</button>
+    </div>`;
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('input-task')?.addEventListener('keydown', e => { if (e.key === 'Enter') addProject(); });
+  init();
+});
+</script>
+</body>
+</html>
