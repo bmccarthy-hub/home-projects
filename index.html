@@ -112,10 +112,13 @@
   .btn-delete-modal { padding: 12px 16px; background: #fee2e2; color: #b91c1c; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; }
 
   /* Manage areas */
-  .area-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-  .area-row input { flex: 1; padding: 9px 11px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; background: #fafafa; color: #1a1a1a; outline: none; }
-  .area-row input:focus { border-color: #6c63ff; background: #fff; }
-  .area-row input:disabled { color: #aaa; background: #f9f9f9; }
+  .area-row { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; }
+  .area-emoji { width: 52px; flex-shrink: 0; padding: 9px 8px; border: 1px solid #ddd; border-radius: 8px; font-size: 18px; background: #fafafa; color: #1a1a1a; outline: none; text-align: center; }
+  .area-emoji:focus { border-color: #6c63ff; background: #fff; }
+  .area-emoji:disabled { background: #f9f9f9; }
+  .area-name { flex: 1; padding: 9px 11px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; background: #fafafa; color: #1a1a1a; outline: none; }
+  .area-name:focus { border-color: #6c63ff; background: #fff; }
+  .area-name:disabled { color: #aaa; background: #f9f9f9; }
   .btn-del-area { background: none; border: none; color: #ddd; font-size: 18px; cursor: pointer; padding: 4px; line-height: 1; flex-shrink: 0; }
   .btn-del-area:hover { color: #e55; }
   .btn-add-area { width: 100%; padding: 10px; border: 1px dashed #ddd; border-radius: 8px; background: none; color: #aaa; font-size: 14px; cursor: pointer; margin-top: 4px; }
@@ -392,8 +395,16 @@ function renderRoomFilters(){
 }
 
 // Manage Areas modal
+function splitAreaName(label){
+  // split "🍳 Kitchen" → {emoji:'🍳', name:'Kitchen'}
+  const t=label.trim();
+  const m=t.match(/^(\p{Emoji_Presentation}|\p{Emoji}️)\s*/u);
+  if(m)return{emoji:m[1],name:t.slice(m[0].length)};
+  return{emoji:'',name:t};
+}
+
 function openManageAreas(){
-  tempAreas=areaKeys().map(k=>({key:k,label:areaNames[k]}));
+  tempAreas=areaKeys().map(k=>{const s=splitAreaName(areaNames[k]);return{key:k,emoji:s.emoji,name:s.name};});
   renderAreaRows();
   document.getElementById('areas-overlay').classList.add('open');
 }
@@ -402,9 +413,13 @@ function closeAreasModal(){document.getElementById('areas-overlay').classList.re
 function renderAreaRows(){
   const container=document.getElementById('area-rows');
   container.innerHTML=tempAreas.map((a,i)=>`
-    <div class="area-row" id="arow-${i}">
-      <input type="text" value="${esc(a.label)}" placeholder="Area name"
-        ${a.key===FIXED_AREA?'disabled':''} oninput="tempAreas[${i}].label=this.value"/>
+    <div class="area-row">
+      <input class="area-emoji" type="text" value="${esc(a.emoji)}" placeholder="🏠"
+        maxlength="4" ${a.key===FIXED_AREA?'disabled':''}
+        oninput="tempAreas[${i}].emoji=this.value"/>
+      <input class="area-name" type="text" value="${esc(a.name)}" placeholder="Area name"
+        ${a.key===FIXED_AREA?'disabled':''}
+        oninput="tempAreas[${i}].name=this.value"/>
       ${a.key===FIXED_AREA
         ?'<span class="area-fixed-label">fixed</span>'
         :`<button class="btn-del-area" onclick="deleteAreaRow(${i})" title="Delete">×</button>`}
@@ -413,11 +428,10 @@ function renderAreaRows(){
 
 function addAreaRow(){
   const key='area_'+Date.now();
-  tempAreas.push({key,label:''});
+  tempAreas.push({key,emoji:'',name:''});
   renderAreaRows();
-  // focus new input
   setTimeout(()=>{
-    const rows=document.querySelectorAll('#area-rows .area-row input:not([disabled])');
+    const rows=document.querySelectorAll('#area-rows .area-name:not([disabled])');
     if(rows.length)rows[rows.length-1].focus();
   },50);
 }
@@ -430,11 +444,12 @@ function deleteAreaRow(i){
 }
 
 function saveAreas(){
-  // collect new area map
   const newNames={};
   tempAreas.forEach(a=>{
-    const label=a.label.trim();
-    if(label||a.key===FIXED_AREA)newNames[a.key]=label||a.label;
+    const emoji=a.emoji.trim();
+    const name=a.name.trim();
+    const label=(emoji&&name)?`${emoji} ${name}`:emoji||name;
+    if(label||a.key===FIXED_AREA)newNames[a.key]=label||'📦 Unassigned';
   });
   if(!newNames[FIXED_AREA])newNames[FIXED_AREA]='📦 Unassigned';
 
