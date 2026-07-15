@@ -278,14 +278,14 @@
 <script>
 const FIXED_AREA = 'unassigned';
 const DEFAULT_AREAS = {
-  unassigned: '📦 Unassigned',
+  unassigned: 'Unassigned',
   kitchen: '🍳 Kitchen',
   bathroom: '🚿 Bathroom',
   bedroom: '🛏 Bedroom',
   living: '🛋 Living Room',
   garage: '🚗 Garage',
   exterior: '🌿 Exterior',
-  other: '📦 Other'
+  other: 'Other'
 };
 const PRI_LABELS = { high:'🔴 High', medium:'⚡ Medium', low:'🔵 Low' };
 const REC_LABELS = { daily:'Daily', weekly:'Weekly', monthly:'Monthly', yearly:'Yearly' };
@@ -349,7 +349,7 @@ async function loadData(){
   if(Array.isArray(parsed)){projects=parsed;areaNames={...DEFAULT_AREAS};}
   else{projects=parsed.projects||[];areaNames={...DEFAULT_AREAS,...(parsed.areaNames||{})};}
   // ensure unassigned always exists
-  if(!areaNames[FIXED_AREA])areaNames[FIXED_AREA]='📦 Unassigned';
+  if(!areaNames[FIXED_AREA])areaNames[FIXED_AREA]='Unassigned';
   projects=projects.map(p=>({recurrence:'none',...p}));
 }
 
@@ -449,9 +449,9 @@ function saveAreas(){
     const emoji=a.emoji.trim();
     const name=a.name.trim();
     const label=(emoji&&name)?`${emoji} ${name}`:emoji||name;
-    if(label||a.key===FIXED_AREA)newNames[a.key]=label||'📦 Unassigned';
+    if(label||a.key===FIXED_AREA)newNames[a.key]=label||'Unassigned';
   });
-  if(!newNames[FIXED_AREA])newNames[FIXED_AREA]='📦 Unassigned';
+  if(!newNames[FIXED_AREA])newNames[FIXED_AREA]='Unassigned';
 
   // figure out which keys were removed
   const removedKeys=Object.keys(areaNames).filter(k=>!newNames[k]);
