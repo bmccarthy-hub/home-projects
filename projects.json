@@ -1,13 +1,13 @@
 {
   "areaNames": {
-    "unassigned": "ÃÂ°ÃÂÃÂÃÂ¦ Unassigned",
+    "unassigned": "Unassigned",
     "kitchen": "Interior Home",
     "bathroom": "Chip Stuff",
     "bedroom": "Travel",
     "living": "Poppop",
-    "garage": "🚗 Garage",
-    "exterior": "🌿 Exterior",
-    "other": "📦 Other"
+    "garage": "Garage",
+    "exterior": "Exterior",
+    "other": "Other"
   },
   "projects": [
     {
