@@ -1,11 +1,10 @@
 {
   "areaNames": {
-    "unassigned": "📦 Unassigned",
-    "kitchen": "🏠🧹 Interior",
-    "bathroom": "♿️ Supplies",
-    "living": "🛋 Living Room",
-    "exterior": "🌿 Exterior",
-    "other": "📦 Other"
+    "unassigned": "ð¦ Unassigned",
+    "kitchen": "Interior Home",
+    "bathroom": "Chip Stuff",
+    "bedroom": "Travel",
+    "living": "Poppop"
   },
   "projects": [
     {
@@ -32,7 +31,7 @@
       "recurrence": "none",
       "id": "3",
       "task": "Clean AC unit circulating pumps",
-      "room": "other",
+      "room": "unassigned",
       "priority": "medium",
       "due": "",
       "done": false,
@@ -42,7 +41,7 @@
       "recurrence": "none",
       "id": "2",
       "task": "Check AC unit functionality",
-      "room": "other",
+      "room": "unassigned",
       "priority": "high",
       "due": "",
       "done": true,
