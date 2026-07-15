@@ -1,47 +1,62 @@
-[
-  {
-    "id": "5",
-    "task": "Clean out fridge before Ireland trip",
-    "room": "kitchen",
-    "priority": "high",
-    "due": "2026-07-26",
-    "done": false,
-    "date": "2026-07-14"
+{
+  "areaNames": {
+    "unassigned": "📦 Unassigned",
+    "kitchen": "🏠🧹 Interior",
+    "bathroom": "♿️ Supplies",
+    "living": "🛋 Living Room",
+    "exterior": "🌿 Exterior",
+    "other": "📦 Other"
   },
-  {
-    "id": "4",
-    "task": "Bathroom counter grout on Chip's side",
-    "room": "bathroom",
-    "priority": "medium",
-    "due": "",
-    "done": false,
-    "date": "2026-07-14"
-  },
-  {
-    "id": "3",
-    "task": "Clean AC unit circulating pumps",
-    "room": "other",
-    "priority": "medium",
-    "due": "",
-    "done": false,
-    "date": "2026-07-14"
-  },
-  {
-    "id": "2",
-    "task": "Check AC unit functionality",
-    "room": "other",
-    "priority": "high",
-    "due": "",
-    "done": true,
-    "date": "2026-07-14"
-  },
-  {
-    "id": "1",
-    "task": "Finish paintings in the kitchen",
-    "room": "kitchen",
-    "priority": "low",
-    "due": "",
-    "done": false,
-    "date": "2026-07-14"
-  }
-]
+  "projects": [
+    {
+      "recurrence": "none",
+      "id": "5",
+      "task": "Clean out fridge before Ireland trip",
+      "room": "kitchen",
+      "priority": "high",
+      "due": "2026-07-26",
+      "done": false,
+      "date": "2026-07-14"
+    },
+    {
+      "recurrence": "none",
+      "id": "4",
+      "task": "Bathroom counter grout on Chip's side",
+      "room": "bathroom",
+      "priority": "medium",
+      "due": "",
+      "done": false,
+      "date": "2026-07-14"
+    },
+    {
+      "recurrence": "none",
+      "id": "3",
+      "task": "Clean AC unit circulating pumps",
+      "room": "other",
+      "priority": "medium",
+      "due": "",
+      "done": false,
+      "date": "2026-07-14"
+    },
+    {
+      "recurrence": "none",
+      "id": "2",
+      "task": "Check AC unit functionality",
+      "room": "other",
+      "priority": "high",
+      "due": "",
+      "done": true,
+      "date": "2026-07-14"
+    },
+    {
+      "recurrence": "none",
+      "id": "1",
+      "task": "Finish paintings in the kitchen",
+      "room": "kitchen",
+      "priority": "low",
+      "due": "",
+      "done": false,
+      "date": "2026-07-14"
+    }
+  ]
+}
