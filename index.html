@@ -380,7 +380,7 @@ async function loadData(){
   const parsed=JSON.parse(atob(data.content.replace(/\n/g,'')));
   if(Array.isArray(parsed)){projects=parsed;areaNames={...DEFAULT_AREAS};}
   else{projects=parsed.projects||[];areaNames={...DEFAULT_AREAS,...(parsed.areaNames||{})};}
-  if(!areaNames[FIXED_AREA])areaNames[FIXED_AREA]='Unassigned';
+  areaNames[FIXED_AREA]='Unassigned';
   projects=projects.map(p=>({recurrence:'none',...p}));
 }
 function dataPayload(){return{areaNames,projects};}
