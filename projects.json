@@ -1,10 +1,13 @@
 {
   "areaNames": {
-    "unassigned": "Ã°ÂÂÂ¦ Unassigned",
+    "unassigned": "ÃÂ°ÃÂÃÂÃÂ¦ Unassigned",
     "kitchen": "Interior Home",
     "bathroom": "Chip Stuff",
     "bedroom": "Travel",
-    "living": "Poppop"
+    "living": "Poppop",
+    "garage": "🚗 Garage",
+    "exterior": "🌿 Exterior",
+    "other": "📦 Other"
   },
   "projects": [
     {
@@ -44,7 +47,7 @@
       "room": "unassigned",
       "priority": "high",
       "due": "",
-      "done": true,
+      "done": false,
       "date": "2026-07-14"
     },
     {
