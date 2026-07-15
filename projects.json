@@ -23,7 +23,7 @@
       "id": "4",
       "task": "Bathroom counter grout on Chip's side",
       "room": "kitchen",
-      "priority": "medium",
+      "priority": "low",
       "due": "",
       "done": false,
       "date": "2026-07-14"
