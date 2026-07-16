@@ -11,6 +11,16 @@
   },
   "projects": [
     {
+      "id": "1784210624071",
+      "task": "Feet wrap for Chip travel",
+      "room": "bathroom",
+      "priority": "high",
+      "due": "2026-07-19",
+      "recurrence": "none",
+      "done": false,
+      "date": "2026-07-16"
+    },
+    {
       "recurrence": "none",
       "id": "5",
       "task": "Clean out fridge before Ireland trip",
