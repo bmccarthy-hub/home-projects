@@ -11,6 +11,16 @@
   },
   "projects": [
     {
+      "id": "1784210695213",
+      "task": "Walgreens Nicotine patches, hydrogen peroxide",
+      "room": "bathroom",
+      "priority": "high",
+      "due": "2026-07-19",
+      "recurrence": "none",
+      "done": false,
+      "date": "2026-07-16"
+    },
+    {
       "id": "1784210624071",
       "task": "Feet wrap for Chip travel",
       "room": "bathroom",
