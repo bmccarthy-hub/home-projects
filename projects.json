@@ -11,6 +11,16 @@
   },
   "projects": [
     {
+      "id": "1784232845021",
+      "task": "Return ninja",
+      "room": "garage",
+      "priority": "high",
+      "due": "2026-07-18",
+      "recurrence": "none",
+      "done": false,
+      "date": "2026-07-16"
+    },
+    {
       "recurrence": "none",
       "id": "1784210695213",
       "task": "Walgreens Nicotine patches, hydrogen peroxide",
