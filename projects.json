@@ -37,7 +37,7 @@
       "room": "bathroom",
       "priority": "high",
       "due": "2026-07-19",
-      "done": false,
+      "done": true,
       "date": "2026-07-16"
     },
     {
