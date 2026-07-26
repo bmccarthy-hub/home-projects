@@ -47,7 +47,7 @@
       "room": "kitchen",
       "priority": "high",
       "due": "2026-07-26",
-      "done": false,
+      "done": true,
       "date": "2026-07-14"
     },
     {
