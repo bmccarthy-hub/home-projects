@@ -11,33 +11,33 @@
   },
   "projects": [
     {
+      "recurrence": "none",
       "id": "1785121866998",
       "task": "Under the sea decor for pickup at papas",
       "room": "other",
       "priority": "high",
       "due": "",
-      "recurrence": "none",
       "done": false,
       "date": "2026-07-26"
     },
     {
+      "recurrence": "weekly",
       "id": "1785121819153",
       "task": "Garbage to curb",
       "room": "other",
       "priority": "high",
       "due": "2026-08-02",
-      "recurrence": "weekly",
       "done": false,
       "date": "2026-07-26"
     },
     {
+      "recurrence": "none",
       "id": "1785084859046",
       "task": "Print label, package up and Return Dillards gown",
       "room": "other",
       "priority": "high",
       "due": "",
-      "recurrence": "none",
-      "done": false,
+      "done": true,
       "date": "2026-07-26"
     },
     {
