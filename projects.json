@@ -11,6 +11,16 @@
   },
   "projects": [
     {
+      "id": "1785204631322",
+      "task": "Passports and aerlingus assist",
+      "room": "bedroom",
+      "priority": "high",
+      "due": "",
+      "recurrence": "none",
+      "done": false,
+      "date": "2026-07-27"
+    },
+    {
       "id": "1785204603219",
       "task": "Plant orange tree",
       "room": "exterior",
