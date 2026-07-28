@@ -11,32 +11,42 @@
   },
   "projects": [
     {
+      "id": "1785275697468",
+      "task": "Chip SS registration",
+      "room": "unassigned",
+      "priority": "high",
+      "due": "",
+      "recurrence": "none",
+      "done": false,
+      "date": "2026-07-28"
+    },
+    {
+      "recurrence": "none",
       "id": "1785204631322",
       "task": "Passports and aerlingus assist",
       "room": "bedroom",
       "priority": "high",
       "due": "",
-      "recurrence": "none",
       "done": false,
       "date": "2026-07-27"
     },
     {
+      "recurrence": "none",
       "id": "1785204603219",
       "task": "Plant orange tree",
       "room": "exterior",
       "priority": "high",
       "due": "",
-      "recurrence": "none",
       "done": false,
       "date": "2026-07-27"
     },
     {
+      "recurrence": "none",
       "id": "1785204546807",
       "task": "Invoice to fb lady - aprons and teatowels",
       "room": "other",
       "priority": "high",
       "due": "",
-      "recurrence": "none",
       "done": false,
       "date": "2026-07-27"
     },
