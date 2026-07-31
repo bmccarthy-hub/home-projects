@@ -11,12 +11,22 @@
   },
   "projects": [
     {
+      "id": "1785513128124",
+      "task": "UberEats for Culver’s",
+      "room": "living",
+      "priority": "high",
+      "due": "",
+      "recurrence": "none",
+      "done": false,
+      "date": "2026-07-30"
+    },
+    {
+      "recurrence": "none",
       "id": "1785275697468",
       "task": "Chip SS registration",
       "room": "unassigned",
       "priority": "high",
       "due": "",
-      "recurrence": "none",
       "done": false,
       "date": "2026-07-28"
     },
