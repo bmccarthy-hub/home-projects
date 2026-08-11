@@ -11,6 +11,16 @@
   },
   "projects": [
     {
+      "id": "1786476208534",
+      "task": "Hume Care",
+      "room": "other",
+      "priority": "high",
+      "due": "2026-08-11",
+      "recurrence": "none",
+      "done": false,
+      "date": "2026-08-11"
+    },
+    {
       "id": "1786476141222",
       "task": "Hotel reservations NY",
       "room": "bedroom",
