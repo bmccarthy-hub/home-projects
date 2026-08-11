@@ -11,13 +11,13 @@
   },
   "projects": [
     {
+      "recurrence": "none",
       "id": "1785513128124",
-      "task": "UberEats for Culver’s",
+      "task": "UberEats for Culverâs",
       "room": "living",
       "priority": "high",
       "due": "",
-      "recurrence": "none",
-      "done": false,
+      "done": true,
       "date": "2026-07-30"
     },
     {
