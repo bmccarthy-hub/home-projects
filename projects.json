@@ -11,29 +11,29 @@
   },
   "projects": [
     {
+      "recurrence": "none",
       "id": "1786476208534",
       "task": "Hume Care",
       "room": "other",
       "priority": "high",
       "due": "2026-08-11",
-      "recurrence": "none",
-      "done": false,
+      "done": true,
       "date": "2026-08-11"
     },
     {
+      "recurrence": "none",
       "id": "1786476141222",
       "task": "Hotel reservations NY",
       "room": "bedroom",
       "priority": "high",
       "due": "",
-      "recurrence": "none",
       "done": false,
       "date": "2026-08-11"
     },
     {
       "recurrence": "none",
       "id": "1785513128124",
-      "task": "UberEats for Culverâs",
+      "task": "UberEats for CulverÃ¢ÂÂs",
       "room": "living",
       "priority": "high",
       "due": "",
