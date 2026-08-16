@@ -11,6 +11,16 @@
   },
   "projects": [
     {
+      "id": "1786903804798",
+      "task": "Paint / baking soda swab",
+      "room": "kitchen",
+      "priority": "medium",
+      "due": "",
+      "recurrence": "none",
+      "done": false,
+      "date": "2026-08-16"
+    },
+    {
       "recurrence": "none",
       "id": "1786476208534",
       "task": "Hume Care",
@@ -33,7 +43,7 @@
     {
       "recurrence": "none",
       "id": "1785513128124",
-      "task": "UberEats for CulverÃ¢ÂÂs",
+      "task": "UberEats for CulverÃÂ¢ÃÂÃÂs",
       "room": "living",
       "priority": "high",
       "due": "",
