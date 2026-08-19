@@ -11,6 +11,16 @@
   },
   "projects": [
     {
+      "id": "1787177749274",
+      "task": "Sprinklers - Fix",
+      "room": "exterior",
+      "priority": "high",
+      "due": "2026-08-22",
+      "recurrence": "none",
+      "done": false,
+      "date": "2026-08-19"
+    },
+    {
       "id": "1787177717269",
       "task": "McKinna Invites",
       "room": "other",
