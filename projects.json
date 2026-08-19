@@ -11,6 +11,16 @@
   },
   "projects": [
     {
+      "id": "1787177717269",
+      "task": "McKinna Invites",
+      "room": "other",
+      "priority": "high",
+      "due": "2026-08-20",
+      "recurrence": "none",
+      "done": false,
+      "date": "2026-08-19"
+    },
+    {
       "recurrence": "none",
       "id": "1786903804798",
       "task": "Paint / baking soda swan - see pic",
