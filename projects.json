@@ -11,12 +11,12 @@
   },
   "projects": [
     {
+      "recurrence": "none",
       "id": "1786903804798",
       "task": "Paint / baking soda swan - see pic",
       "room": "kitchen",
       "priority": "medium",
       "due": "",
-      "recurrence": "none",
       "done": false,
       "date": "2026-08-16"
     },
@@ -43,7 +43,7 @@
     {
       "recurrence": "none",
       "id": "1785513128124",
-      "task": "UberEats for CulverÃÂ¢ÃÂÃÂs",
+      "task": "UberEats for CulverÃÂÃÂ¢ÃÂÃÂÃÂÃÂs",
       "room": "living",
       "priority": "high",
       "due": "",
@@ -106,7 +106,7 @@
       "task": "Garbage to curb",
       "room": "other",
       "priority": "high",
-      "due": "2026-08-16",
+      "due": "2026-08-23",
       "done": false,
       "date": "2026-07-26"
     },
